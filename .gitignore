@@ -39,6 +39,10 @@ media/
 *.tflite
 *.onnx
 
+# Allow website model files in the runnable app folder
+!HealthCareAI-Website/Models/
+!HealthCareAI-Website/Models/**
+
 # Archives
 *.zip
 *.rar
