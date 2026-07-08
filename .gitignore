@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Database and uploads
+HealthCareAI-Website/database/Uploaded/
+HealthCareAI-Website/database/*.db
+
+# Large datasets, models and media (keep locally, do not track)
+HealthCareAI-Datasets/
+HealthCareAI-Models/
+HealthCareAI-Model_Codes/
+media/
+
+# Large model file extensions
+*.h5
+*.hdf5
+*.ckpt
+*.pb
+*.tflite
+*.onnx
+
+# Archives
+*.zip
+*.rar
