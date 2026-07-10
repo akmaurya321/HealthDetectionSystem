@@ -1,6 +1,6 @@
 import os
 import sqlite3
-import numpy as np
+import random
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -20,7 +20,7 @@ except ImportError as e:
     # Define dummy functions if ML not available
     class DummyModel:
         def predict(self, x):
-            return [np.random.randint(0, 2)]
+            return [random.randint(0, 1)]
     
     def load_model(*args, **kwargs):
         return DummyModel()
@@ -29,7 +29,7 @@ except ImportError as e:
         return None
     
     def img_to_array(*args, **kwargs):
-        return np.random.rand(224, 224, 3)
+        return [[[random.random() for _ in range(3)] for _ in range(224)] for _ in range(224)]
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, 'database', 'HealthCareAI.db')
@@ -734,7 +734,7 @@ def Report():
 
 if __name__ == '__main__':
     print("\n" + "="*50)
-    print("    DeepCareX Medical Assistant")
+    print("    HealthCare AI Medical Assistant")
     print("="*50)
     print(f"\nDatabase: {DB_PATH}")
     print(f"Upload folder: {UPLOAD_FOLDER}")

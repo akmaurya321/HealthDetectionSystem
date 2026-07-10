@@ -1,138 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}"
-      type="text/css"
-    />
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <nav
-      class="navbar navbar-expand-lg bg-body-tertiary bg-dark mb-4"
-      data-bs-theme="dark"
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">HealthCare AI</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('home')}}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >About Us</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('Contact')}}">Contact</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
+{% extends "base.html" %}
 
-    <!-- About Section -->
-    <section id="about" class="py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h2>About Us</h2>
-            <p>
-              We are, at our core, a group of passionate people that are
-              committed to transforme the healthcare sector through the use of
-              machine learning and deep learning.
-            </p>
-            <p>
-              Our mission is to give healthcare professionals with the resources
-              they need to offer patients with better, more individualised care
-              while also arming people with the knowledge they need to make
-              educated decisions about their health.
-            </p>
-            <p>
-              Our AI-powered products and services are created to be
-              user-friendly, available, and efficient. We can assist you whether
-              you're a patient looking for dependable health information or a
-              healthcare professional wishing to improve your practise.
-            </p>
-            <p>
-              So why pick us? Simply put, we're dedicated to utilising
-              cutting-edge technology to improve healthcare by making it more
-              accessible, personalised, and efficient than before. We're here to
-              assist you in navigating the complex world of healthcare with
-              confidence and ease, whether you're seeking for information,
-              medical test or support.
-            </p>
-          </div>
-          <div class="col-md-6">
-            <img
-              src="{{ url_for('static',filename='Images/about.jpg') }}"
-              alt="Placeholder image"
-              class="img-fluid"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+{% block title %}About Us - HealthCare AI{% endblock %}
 
-    <!-- Footer Section -->
-    <footer class="bg-dark text-white mt-auto">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>&copy; 2025 HealthCare AI</p>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-unstyled">
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Use</a></li>
-            </ul>
-          </div>
+{% block content %}
+<!-- About Header -->
+<section class="w-full py-32 bg-background relative overflow-hidden">
+    <!-- Asymmetric background element -->
+    <div class="absolute top-0 right-0 w-1/3 h-[120%] bg-muted/40 rounded-bl-[100px] -z-10 -translate-y-12"></div>
+    
+    <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-6 flex items-center gap-4">
+            <span class="font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent">Our Philosophy</span>
+            <span class="h-px w-16 bg-accent/30"></span>
         </div>
-      </div>
-    </footer>
-    <script
-      src="{{url_for('static',filename='jquery/jquery-3.6.4.min.js')}}"
-      type="text/javascript"
-    ></script>
-    <script
-      src="{{url_for('static',filename='popper/popper.min.js')}}"
-      type="text/javascript"
-    ></script>
-    <script
-      src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js')}}"
-      type="text/javascript"
-    ></script>
-  </body>
-</html>
+        
+        <h1 class="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight mb-16 max-w-2xl">
+            Transforming Healthcare Through <span class="text-accent italic font-normal">Intelligence</span>
+        </h1>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="w-full pb-32 pt-8 bg-background">
+    <div class="mx-auto max-w-5xl px-6 grid md:grid-cols-[1.3fr_0.7fr] gap-20">
+        
+        <!-- Text Content -->
+        <div class="space-y-8 text-lg text-foreground/80 leading-relaxed font-sans">
+            <p>
+                We are, at our core, a group of passionate individuals committed to transforming the healthcare sector through the use of machine learning and deep learning algorithms.
+            </p>
+            <p>
+                Our mission is to equip healthcare professionals with the resources they need to offer patients better, more individualized care while simultaneously empowering people with the knowledge required to make educated decisions about their health.
+            </p>
+            <div class="my-12 py-8 border-y border-border">
+                <p class="font-serif text-2xl text-accent italic leading-snug">
+                    "We're dedicated to utilizing cutting-edge technology to improve healthcare by making it more accessible, personalized, and efficient than ever before."
+                </p>
+            </div>
+            <p>
+                Our AI-powered products and services are created to be user-friendly, highly accessible, and efficient. We can assist you whether you're a patient looking for dependable health information or a healthcare professional wishing to elevate your daily practice.
+            </p>
+            <p>
+                We are here to assist you in navigating the complex world of healthcare with confidence and ease.
+            </p>
+        </div>
+
+        <!-- Imagery -->
+        <div class="relative h-full w-full min-h-[400px]">
+            <div class="sticky top-32">
+                <div class="w-full aspect-[3/4] rounded-lg overflow-hidden shadow-sm border border-border">
+                    <img src="{{ url_for('static', filename='Images/about.jpg') }}" alt="Medical Professionals" class="w-full h-full object-cover filter brightness-95 grayscale-[15%]">
+                    <div class="absolute inset-0 bg-accent/5 mix-blend-multiply"></div>
+                </div>
+                <!-- Decorative rule -->
+                <div class="absolute -right-6 -bottom-6 w-32 h-32 border-r-2 border-b-2 border-accent/40 rounded-br-3xl -z-10"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

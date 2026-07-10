@@ -1,469 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DeepCareX</title>
-    <style>
-      .c-item {
-        height: 400px;
-      }
-      .c-img {
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.6);
-      }
-      .card-img-top {
-        width: 100%;
-        height: 25vw;
-        object-fit: cover;
-      }
-    </style>
-    <link
-      href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}"
-      type="text/css"
-    />
-  </head>
-  <body>
-    <!--Navbar-->
-    <nav
-      class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-      data-bs-theme="dark"
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">HealthCare AI</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('About')}}">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('Contact')}}">Contact</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              id="searchInput"
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              autocomplete="off"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
-    <!--Authentication message-->
+{% extends "base.html" %}
 
-    {% for message in get_flashed_messages(with_categories=True) %}
-    <div class="alert alert-{{ message[0] }} mb-0" role="alert">
-      <button
-        type="button"
-        class="close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>{{ message[1] }}</strong>
-    </div>
-    {% endfor %} ;
+{% block title %}Home - HealthCare AI{% endblock %}
 
-    <!--Carousel-->
-    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleIndicators"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img
-            src="{{ url_for('static',filename='Images/carousel-1.jpg')}}"
-            class="d-block w-100 c-img"
-            alt="Slide-1"
-          />
-        </div>
-        <div class="carousel-item c-item">
-          <img
-            src="{{ url_for('static',filename='Images/carousel-2.jpg')}}"
-            class="d-block w-100 c-img"
-            alt="Slide-2"
-          />
-        </div>
-        <div class="carousel-item c-item">
-          <img
-            src="{{ url_for('static',filename='Images/carousel-3.jpg')}}"
-            class="d-block w-100 c-img"
-            alt="Slide-3"
-          />
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExample"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <!--Signup-->
-    <section class="">
-      <div
-        class="px-4 py-5 px-md-5 text-center text-lg-start"
-        style="background-color: hsl(0, 0%, 96%)"
-      >
-        <div class="container">
-          <div class="row gx-lg-5 align-items-center">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-              <h1 class="my-5 display-3 fw-bold ls-tight">
-                HealthCare AI<br />
-                <span class="text-primary">One Step Ahead</span>
-              </h1>
-              <p style="color: hsl(217, 10%, 50.8%)">
-                Welcome to HealthCare AI, where we adhere to the philosophy that
-                modern technology should be used in conjunction with caring
-                treatment to enhance the lives of both patients and healthcare
-                professionals. HealthCare AI is a AI based heathcare system that
-                will help you to generate report of your illness. We rely on
-                your symptoms and past data to determine the result of your
-                disease. We are using various pre-trained deep learning &
-                machine learning models to get the result.
-              </p>
+{% block content %}
+<!-- Hero Section with Carousel Elements -->
+<section class="relative w-full py-32 lg:py-44 overflow-hidden">
+    <!-- Asymmetric background element -->
+    <div class="absolute top-0 right-0 w-2/3 h-full bg-muted/40 rounded-bl-[100px] -z-10"></div>
+    
+    <div class="mx-auto max-w-5xl px-6 grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-center">
+        <!-- Text Content -->
+        <div class="relative z-10">
+            <div class="mb-6 flex items-center gap-4">
+                <span class="font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent">Medical Intelligence</span>
+                <span class="h-px w-16 bg-accent/30"></span>
             </div>
-            <div class="col-lg-6 mb-5 mb-lg-0">
-              <div class="card" style="border-radius: 15px">
-                <div class="card-body p-5">
-                  <h2 class="text-uppercase text-center mb-5">
-                    Create an account
-                  </h2>
-                  <form action="{{url_for('register')}}" method="post">
-                    <div class="form-outline mb-4">
-                      <input
-                        type="text"
-                        id="form3Example1cg"
-                        class="form-control form-control-lg"
-                        name="username"
-                        placeholder="Your Name"
-                        autocomplete="username"
-                        required
-                      />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <input
-                        type="email"
-                        id="form3Example3cg"
-                        class="form-control form-control-lg"
-                        name="useremail"
-                        placeholder="Your Email"
-                        autocomplete="email"
-                        required
-                      />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <input
-                        type="password"
-                        id="form3Example4cg"
-                        class="form-control form-control-lg"
-                        name="userpassword"
-                        placeholder="Password (min 6 characters)"
-                        autocomplete="new-password"
-                        minlength="6"
-                        required
-                      />
-                    </div>
-                    <div class="form-outline mb-4">
-                      <input
-                        type="password"
-                        id="form3Example4cdg"
-                        class="form-control form-control-lg"
-                        name="confirm_userpassword"
-                        placeholder="Confirm Password"
-                        autocomplete="new-password"
-                        required
-                      />
-                    </div>
-                    <div class="form-check d-flex justify-content-center mb-5">
-                      <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3cg"
-                      />
-                      <label class="form-check-label" for="form2Example3cg">
-                        I agree all statements in
-                        <a href="#!" class="text-body"
-                          ><u>Terms of service</u></a
-                        >
-                      </label>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                      <button
-                        type="submit"
-                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                      >
-                        Register
-                      </button>
-                    </div>
-                    <p class="text-center text-muted mt-5 mb-0">
-                      Have already an account?
-                      <a
-                        href="#"
-                        class="fw-bold text-body"
-                        data-bs-toggle="modal"
-                        data-bs-target="#loginModal"
-                        ><u>Login here</u></a
-                      >
-                    </p>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--Login Modal-->
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content bg-dark text-white">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-            <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form action="{{url_for('login')}}" method="post">
-            <div class="modal-body mx-3">
-              <div class="md-form mb-5">
-                <i class="fas fa-envelope prefix grey-text"></i>
-                <input
-                  type="text"
-                  id="defaultForm-email"
-                  class="form-control validate"
-                  name="name"
-                  autocomplete="username"
-                  required
-                />
-                <label
-                  data-error="wrong"
-                  data-success="right"
-                  for="defaultForm-email"
-                  >Username</label
-                >
-              </div>
-
-              <div class="md-form mb-4">
-                <i class="fas fa-lock prefix grey-text"></i>
-                <input
-                  type="password"
-                  id="defaultForm-pass"
-                  class="form-control validate"
-                  name="password"
-                  autocomplete="current-password"
-                  required
-                />
-                <label
-                  data-error="wrong"
-                  data-success="right"
-                  for="defaultForm-pass"
-                  >Password</label
-                >
-              </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <button class="btn btn-success" type="submit">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <!--Cards-->
-    <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
-      <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static',filename='Images/Dr._Eric.jpg')}}"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Dr. Eric Topol</h5>
-            <q class="card-text">
-              The integration of artificial intelligence in healthcare will
-              fundamentally change the way we practice medicine, and ultimately
-              lead to better patient outcomes.
-            </q>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted"
-              >Founder and Director, Scripps Research Translational
-              Institute</small
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static',filename='Images/Dr._Chang.jpg')}}"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Dr. Anthony Chang</h5>
-            <q class="card-text"
-              >AI will empower doctors to focus on what they do best - treating
-              patients - by doing what they do best - processing data.</q
-            >
-          </div>
-          <div class="card-footer">
-            <small class="text-muted"
-              >Chief Intelligence and Innovation Officer at Children's Hospital
-              of Orange County</small
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100">
-          <img
-            src="{{ url_for('static',filename='Images/Dr._Li.jpg')}}"
-            class="card-img-top"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Dr. Fei-Fei Li</h5>
-            <q class="card-text">
-              The greatest potential for AI is not replacing doctors, but rather
-              augmenting their abilities and enabling them to focus on what they
-              do best: providing compassionate and personalized care to their
-              patients.
-            </q>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted"
-              >Co-Director of the Stanford Institute for Human-Centered
-              Artificial Intelligence.</small
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--footer-->
-    <footer class="bg-dark text-center text-white">
-      <div class="container p-4 pb-0">
-        <section class="">
-          <form action="{{url_for('Newsletter')}}" method="post">
-            <div class="row d-flex justify-content-center">
-              <div class="col-auto">
-                <p class="pt-2">
-                  <strong>Sign up for our newsletter</strong>
-                </p>
-              </div>
-              <div class="col-md-5 col-12">
-                <div class="form-outline form-white mb-4">
-                  <input
-                    type="email"
-                    id="form5Example29"
-                    class="form-control"
-                    name="email"
-                    autocomplete="email"
-                  />
-                  <label class="form-label" for="form5Example29"
-                    >Email address</label
-                  >
-                </div>
-              </div>
-              <div class="col-auto">
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-outline-light mb-4">
-                  Subscribe
+            
+            <h1 class="font-serif text-5xl lg:text-[4.5rem] leading-[1.1] tracking-tight mb-8">
+                HealthCare AI <br>
+                <span class="text-accent italic font-normal">One Step Ahead.</span>
+            </h1>
+            
+            <p class="text-lg text-muted-foreground mb-12 max-w-lg leading-relaxed">
+                Welcome to HealthCare AI, where classical care meets modern intelligence. We rely on your symptoms and our pre-trained deep learning models to predict disease trajectories with precision and warmth.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#register-section" class="inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-8 py-3 text-sm font-medium text-white hover:bg-accent-secondary hover:-translate-y-0.5 transition-all duration-200 shadow-sm shadow-accent/20">
+                    Create an Account
+                </a>
+                <button type="button" onclick="document.getElementById('loginModal').classList.remove('hidden')" class="inline-flex min-h-[44px] items-center justify-center rounded-md border border-foreground bg-transparent px-8 py-3 text-sm font-medium text-foreground hover:bg-muted hover:border-accent hover:text-accent transition-all duration-200 shadow-sm">
+                    Patient Login
                 </button>
-              </div>
             </div>
-          </form>
-        </section>
-      </div>
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2025 Copyright:
-        <a class="text-white" href="#">HealthCareAI.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <script
-      src="{{url_for('static',filename='jquery/jquery-3.6.4.min.js')}}"
-      type="text/javascript"
-    ></script>
-    <script
-      src="{{url_for('static',filename='popper/popper.min.js')}}"
-      type="text/javascript"
-    ></script>
-    <script
-      src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js')}}"
-      type="text/javascript"
-    ></script>
-  </body>
-</html>
+        </div>
+        
+        <!-- Imagery (using carousel images but in an asymmetric collage) -->
+        <div class="relative h-[500px] w-full hidden md:block">
+            <div class="absolute top-0 right-0 w-4/5 h-4/5 rounded-lg overflow-hidden shadow-lg border border-border">
+                <img src="{{ url_for('static', filename='Images/carousel-1.jpg') }}" alt="Medical Research" class="w-full h-full object-cover filter brightness-90">
+                <!-- Overlay to make it feel more "editorial" -->
+                <div class="absolute inset-0 bg-accent/5 mix-blend-multiply"></div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-3/5 h-3/5 rounded-lg overflow-hidden shadow-lg border border-border bg-card p-2 hover:border-accent transition-colors duration-300">
+                <img src="{{ url_for('static', filename='Images/carousel-2.jpg') }}" alt="Patient Care" class="w-full h-full object-cover rounded-md filter brightness-95 grayscale-[20%]">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider -->
+<div class="mx-auto max-w-5xl px-6">
+    <div class="rule-line"></div>
+</div>
+
+<!-- Testimonials / Doctors -->
+<section class="w-full py-32 bg-background">
+    <div class="mx-auto max-w-5xl px-6">
+        <div class="mb-16 flex items-center gap-4">
+            <span class="h-px flex-1 bg-border"></span>
+            <span class="font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent text-center">
+                Expert Perspectives
+            </span>
+            <span class="h-px flex-1 bg-border"></span>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-10">
+            <!-- Dr. Topol -->
+            <div class="bg-card border border-border rounded-lg p-8 shadow-sm hover-card-shadow flex flex-col items-center text-center relative group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-accent/0 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+                <div class="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-border p-1">
+                    <img src="{{ url_for('static', filename='Images/Dr._Eric.jpg') }}" class="w-full h-full object-cover rounded-full grayscale-[10%]" alt="Dr. Eric Topol">
+                </div>
+                <div class="text-accent font-serif text-5xl absolute opacity-20 top-24 left-6">"</div>
+                <p class="font-serif italic text-lg leading-relaxed mb-6 z-10">
+                    The integration of artificial intelligence in healthcare will fundamentally change the way we practice medicine, and ultimately lead to better patient outcomes.
+                </p>
+                <div class="mt-auto">
+                    <h5 class="small-caps font-bold text-foreground mb-1">Dr. Eric Topol</h5>
+                    <p class="text-xs text-muted-foreground">Founder & Director, Scripps Research</p>
+                </div>
+            </div>
+
+            <!-- Dr. Chang -->
+            <div class="bg-card border border-border rounded-lg p-8 shadow-sm hover-card-shadow flex flex-col items-center text-center relative group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-accent/0 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+                <div class="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-border p-1">
+                    <img src="{{ url_for('static', filename='Images/Dr._Chang.jpg') }}" class="w-full h-full object-cover rounded-full grayscale-[10%]" alt="Dr. Anthony Chang">
+                </div>
+                <div class="text-accent font-serif text-5xl absolute opacity-20 top-24 left-6">"</div>
+                <p class="font-serif italic text-lg leading-relaxed mb-6 z-10">
+                    AI will empower doctors to focus on what they do best - treating patients - by doing what they do best - processing data.
+                </p>
+                <div class="mt-auto">
+                    <h5 class="small-caps font-bold text-foreground mb-1">Dr. Anthony Chang</h5>
+                    <p class="text-xs text-muted-foreground">Chief Intelligence Officer, CHOC</p>
+                </div>
+            </div>
+
+            <!-- Dr. Li -->
+            <div class="bg-card border border-border rounded-lg p-8 shadow-sm hover-card-shadow flex flex-col items-center text-center relative group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-accent/0 group-hover:bg-accent transition-colors duration-300 rounded-t-lg"></div>
+                <div class="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-border p-1">
+                    <img src="{{ url_for('static', filename='Images/Dr._Li.jpg') }}" class="w-full h-full object-cover rounded-full grayscale-[10%]" alt="Dr. Fei-Fei Li">
+                </div>
+                <div class="text-accent font-serif text-5xl absolute opacity-20 top-24 left-6">"</div>
+                <p class="font-serif italic text-lg leading-relaxed mb-6 z-10">
+                    The greatest potential for AI is not replacing doctors, but rather augmenting their abilities and enabling personalized care.
+                </p>
+                <div class="mt-auto">
+                    <h5 class="small-caps font-bold text-foreground mb-1">Dr. Fei-Fei Li</h5>
+                    <p class="text-xs text-muted-foreground">Co-Director, Stanford HAI</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration & Newsletter Section -->
+<section id="register-section" class="w-full py-32 bg-muted/50 border-t border-border">
+    <div class="mx-auto max-w-5xl px-6 grid md:grid-cols-[1fr_1fr] gap-16">
+        
+        <!-- Registration Form -->
+        <div class="bg-card border border-border rounded-lg p-10 shadow-sm relative">
+            <div class="absolute top-0 left-0 w-full h-1 bg-accent rounded-t-lg"></div>
+            <h2 class="font-serif text-3xl mb-8">Begin Your Journey</h2>
+            
+            <form action="{{ url_for('register') }}" method="post" class="space-y-6">
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Your Name</label>
+                    <input type="text" name="username" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="Jane Doe">
+                </div>
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Email Address</label>
+                    <input type="email" name="useremail" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="jane@example.com">
+                </div>
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Password</label>
+                    <input type="password" name="userpassword" minlength="6" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="Min. 6 characters">
+                </div>
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Confirm Password</label>
+                    <input type="password" name="confirm_userpassword" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="Repeat password">
+                </div>
+                
+                <div class="flex items-center gap-3 mt-8">
+                    <input type="checkbox" required class="w-4 h-4 accent-accent">
+                    <span class="text-sm text-muted-foreground">I agree to the <a href="#" class="text-foreground hover:text-accent underline decoration-border underline-offset-4">Terms of Service</a>.</span>
+                </div>
+                
+                <button type="submit" class="w-full min-h-[44px] rounded-md bg-foreground text-white font-medium hover:bg-accent transition-colors duration-300 mt-4 shadow-sm">
+                    Register Account
+                </button>
+            </form>
+        </div>
+
+        <!-- Newsletter & Info -->
+        <div class="flex flex-col justify-center">
+            <h3 class="font-serif text-4xl mb-6">Stay Informed</h3>
+            <p class="text-muted-foreground mb-12">
+                Join our newsletter to receive the latest updates in medical artificial intelligence, directly to your inbox. We value your privacy and curate only the most essential breakthroughs.
+            </p>
+            
+            <form action="{{ url_for('Newsletter') }}" method="post" class="flex flex-col sm:flex-row gap-4">
+                <input type="email" name="email" required class="flex-1 h-12 bg-card border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground" placeholder="Enter your email">
+                <button type="submit" class="min-h-[44px] rounded-md border border-foreground px-8 font-medium hover:bg-muted hover:border-accent hover:text-accent transition-colors shadow-sm">
+                    Subscribe
+                </button>
+            </form>
+            
+            <div class="mt-16">
+                <div class="rule-line mb-8"></div>
+                <p class="small-caps text-muted-foreground mb-4">Already a member?</p>
+                <button onclick="document.getElementById('loginModal').classList.remove('hidden')" class="text-accent hover:text-accent-secondary font-medium group flex items-center gap-2 transition-colors">
+                    Access your patient portal
+                    <span class="group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Login Modal (Tailwind CSS Modal) -->
+<div id="loginModal" class="fixed inset-0 z-50 hidden bg-background/80 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center p-4">
+    <div class="relative w-full max-w-md bg-card border border-border shadow-lg rounded-lg p-8">
+        <!-- Close button -->
+        <button onclick="document.getElementById('loginModal').classList.add('hidden')" class="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="text-center mb-8">
+            <h4 class="font-serif text-3xl font-bold">Sign In</h4>
+            <div class="rule-line w-12 mx-auto mt-4 bg-accent"></div>
+        </div>
+        
+        <form action="{{ url_for('login') }}" method="post" class="space-y-6">
+            <div>
+                <label class="small-caps mb-2 block text-muted-foreground">Username</label>
+                <input type="text" name="name" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground">
+            </div>
+            <div>
+                <label class="small-caps mb-2 block text-muted-foreground">Password</label>
+                <input type="password" name="password" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground">
+            </div>
+            
+            <button type="submit" class="w-full min-h-[44px] rounded-md bg-accent text-white font-medium hover:bg-accent-secondary transition-colors duration-300 mt-4 shadow-sm shadow-accent/20">
+                Authenticate
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

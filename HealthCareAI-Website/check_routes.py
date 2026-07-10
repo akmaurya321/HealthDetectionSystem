@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Check Flask URL generation"""
 import sys
-sys.path.insert(0, 'c:\\Users\\akmau\\Videos\\DeepCareX-main\\DeepCareX-Website')
+sys.path.insert(0, 'c:\\Users\\akmau\\Videos\\HealthCareAI-main\\HealthCareAI-Website')
 
 from main import app
 

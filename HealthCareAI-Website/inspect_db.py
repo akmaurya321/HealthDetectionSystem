@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DB_PATH = './database/DeepCareX.db'
+DB_PATH = './database/HealthCareAI.db'
 
 print("=" * 60)
 print("DATABASE INSPECTION")

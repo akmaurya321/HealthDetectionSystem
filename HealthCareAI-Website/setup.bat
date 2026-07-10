@@ -1,10 +1,10 @@
 @echo off
-echo Setting up DeepCareX...
+echo Setting up HealthCare AI...
 echo.
 
-if exist "database\DeepCareX.db" (
+if exist "database\HealthCareAI.db" (
     echo Removing old database...
-    del "database\DeepCareX.db"
+    del "database\HealthCareAI.db"
 )
 
 echo Creating database...

@@ -1,236 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact</title>
-    <style>
-      /*  
-  .container{
-            width: 60%;
-            padding: 45px;
-            border-radius: 0;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-}*/
-      .row {
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-      }
-      .col-md-7 {
-        padding: 20px;
-        background: #393f4d;
-        color: black;
-      }
-      .col-md-5 {
-        padding: 20px;
-        background: #feda6a;
-        color: black;
-      }
-      input[type="text"] {
-        background-color: black;
-        border-style: solid;
-        border-color: black;
-        height: auto;
-        color: white;
-        font-size: 14px;
-        border-radius: 2px;
-      }
-      textarea {
-        background-color: black;
-        color: white;
-        border-style: solid;
-        border-color: black;
-        font-size: 14px;
-        border-radius: 2px;
-        height: 100px;
-        width: 100%;
-      }
-      .bi {
-        font-size: 20px;
-      }
-      .d-flex p {
-        font-size: 18px;
-        padding-left: 10px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-      }
-      .form-label {
-        color: white;
-      }
-      /*
-@media only screen and (max-width:600px){
-    .contact-form{
-        width: 100%;
-        position: absolute;
-        left: 50%;
-        top: 90%;
-    }
-}*/
-    </style>
-    <link
-      href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}"
-      type="text/css"
-    />
-  </head>
-  <body
-    style="
-      background-image: url('static/Images/contact.jpg');
-      background-size: cover;
-    "
-  >
-    <!--Navbar-->
-    <nav
-      class="navbar navbar-expand-lg bg-body-tertiary bg-dark mb-4"
-      data-bs-theme="dark"
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">DeepCareX</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('home')}}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('About')}}">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Contact</a
-              >
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+{% extends "base.html" %}
+
+{% block title %}Contact - HealthCare AI{% endblock %}
+
+{% block content %}
+<section class="w-full py-32 bg-background relative overflow-hidden">
+    <!-- Asymmetric background element -->
+    <div class="absolute top-0 right-0 w-1/2 h-[80%] bg-muted/30 rounded-bl-[100px] -z-10"></div>
+    
+    <div class="mx-auto max-w-5xl px-6 grid md:grid-cols-[1fr_1.2fr] gap-16">
+        
+        <!-- Contact Info -->
+        <div class="flex flex-col justify-center">
+            <div class="mb-6 flex items-center gap-4">
+                <span class="font-mono text-xs font-medium uppercase tracking-[0.15em] text-accent">Get in Touch</span>
+                <span class="h-px w-16 bg-accent/30"></span>
+            </div>
+            
+            <h1 class="font-serif text-5xl leading-[1.1] tracking-tight mb-8">
+                We're Here to <span class="text-accent italic font-normal">Listen</span>
+            </h1>
+            
+            <p class="text-lg text-muted-foreground mb-12 leading-relaxed">
+                Whether you have a question about our predictive models, need technical support, or want to discuss a partnership, our team is ready to assist you.
+            </p>
+            
+            <div class="space-y-6">
+                <div>
+                    <h4 class="small-caps text-foreground mb-1 font-bold">Email Inquiries</h4>
+                    <p class="text-muted-foreground font-sans">support@healthcareai.com</p>
+                </div>
+                <div>
+                    <h4 class="small-caps text-foreground mb-1 font-bold">Press & Media</h4>
+                    <p class="text-muted-foreground font-sans">press@healthcareai.com</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-    <!--Authentication message-->
-    {% for message in get_flashed_messages(with_categories=True) %}
-    <div class="alert alert-{{ message[0] }} mb-0" role="alert">
-      <button
-        type="button"
-        class="close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>{{ message[1] }}</strong>
+        
+        <!-- Contact Form -->
+        <div class="bg-card border border-border rounded-lg p-10 shadow-sm relative z-10">
+            <div class="absolute top-0 left-0 w-full h-1 bg-accent rounded-t-lg"></div>
+            
+            <form action="{{ url_for('Reply') }}" method="post" class="space-y-6">
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Full Name</label>
+                    <input type="text" name="name" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="John Doe">
+                </div>
+                
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Email Address</label>
+                    <input type="email" name="email" required class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="john@example.com">
+                </div>
+                
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Contact Number</label>
+                    <input type="text" name="contact" class="w-full h-12 bg-transparent border border-border rounded-md px-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60" placeholder="+1 (555) 000-0000">
+                </div>
+                
+                <div>
+                    <label class="small-caps mb-2 block text-muted-foreground">Message</label>
+                    <textarea name="message" required rows="5" class="w-full bg-transparent border border-border rounded-md p-4 focus:ring-2 focus:ring-accent focus:border-accent transition-colors outline-none text-foreground placeholder:text-muted-foreground/60 resize-none" placeholder="How can we help you?"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full min-h-[44px] rounded-md bg-accent text-white font-medium hover:bg-accent-secondary transition-colors duration-300 shadow-sm shadow-accent/20">
+                    Send Message
+                </button>
+            </form>
+        </div>
+        
     </div>
-    {% endfor %}
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-md-7">
-          <h4 class="text-white">Get in touch</h4>
-          <form action="{{url_for('Reply')}}" method="post">
-            <div class="mb-3">
-              <label for="formGroupExampleInput" class="form-label">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="formGroupExampleInput"
-                placeholder="Enter your name"
-                name="name"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"
-                >Email</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="formGroupExampleInput2"
-                placeholder="Enter your email"
-                name="email"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="formGroupExampleInput2" class="form-label"
-                >Contact</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="formGroupExampleInput2"
-                placeholder="Enter your number"
-                name="contact"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Message</label
-              >
-              <textarea
-                id="exampleFormControlTextarea1"
-                placeholder="Message"
-                name="message"
-              ></textarea>
-            </div>
-            <button class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-        <div class="col-md-5">
-          <h4>Contact us</h4>
-          <hr />
-          <div class="mt-4">
-            <div class="d-flex">
-              <i class="bi bi-geo-alt-fill"></i>
-              <p>Address: Mumbai, INDIA</p>
-            </div>
-            <hr />
-            <div class="d-flex">
-              <i class="bi bi-telephone-fill"></i>
-              <p>Contact :- 8888888888</p>
-            </div>
-            <hr />
-            <div class="d-flex">
-              <i class="bi bi-envelope-fill"></i>
-              <p>Email:- HealthCareAI@gmail.com</p>
-            </div>
-            <hr />
-            <div class="d-flex">
-              <i class="bi bi-browser-chrome"></i>
-              <p>Website: www.HealthCareAI.com</p>
-            </div>
-            <hr />
-          </div>
-        </div>
-      </div>
-    </div>
-    <script
-      src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js')}}"
-      integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+</section>
+{% endblock %}
